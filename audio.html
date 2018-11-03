@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<!-- CHECKBOXES ===================================
+=============================================== -->
 <style>
 *,*:before,*:after{
 box-sizing:border-box;
@@ -103,11 +105,6 @@ left:calc(100% - 36px);
    -moz-box-shadow:0 0 0 2px transparent,0 3px 3px rgba(0,0,0,.3);
         box-shadow:0 0 0 2px transparent,0 3px 3px rgba(0,0,0,.3);
 }
-.ios-toggle:checked + .checkbox-label:after{
-content:attr(data-on);
-left:60px;
-width:36px;
-}
 
 /*RAIN LABELLING----------------------------------------------------------------*/
 #rain_checkbox + .checkbox-label{
@@ -121,9 +118,6 @@ width:36px;
 -webkit-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
    -moz-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
         box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
-}
-#rain_checkbox:checked + .checkbox-label:after{
-color:#1fc1c8;
 }
 
 /*FIRE LABELLING----------------------------------------------------------------*/
@@ -139,9 +133,6 @@ color:#1fc1c8;
    -moz-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
         box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
 }
-#fire_checkbox:checked + .checkbox-label:after{
-color:#1fc1c8;
-}
 
 /*WIND LABELLING----------------------------------------------------------------*/
 #wind_checkbox + .checkbox-label{
@@ -156,38 +147,19 @@ color:#1fc1c8;
    -moz-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
         box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
 }
-#wind_checkbox:checked + .checkbox-label:after{
-color:#1fc1c8;
-}
 
 </style>
-<!-- <div class="audio_switch">
-  <button onclick="playRain()" type="checkbox">Play Rain Audio</button>
-  <button onclick="playFire()" type="checkbox">Play Fire Audio</button>
-  <button onclick="playWind()" type="checkbox">Play Wind Audio</button>
-
-  <label class="switch">Rain
-  <input type="checkbox" onclick="playRain()">
-  <span class="slider round"></span>
-  </label>
-  <label class="switch">Fire
-  <input type="checkbox" onclick="playFire()">
-  <span class="slider round"></span>
-  </label>
-  <label class="switch">Wind
-  <input type="checkbox" onclick="playWind()">
-  <span class="slider round"></span>
-  </label>
-</div> -->
-
 <div id="toggles">
 <input type="checkbox" name="rain_checkbox" id="rain_checkbox" class="ios-toggle" onclick="playRain()"/>
-<label for="rain_checkbox" class="checkbox-label" data-off="RAIN OFF" data-on="RAIN ON"></label>
+<label for="rain_checkbox" class="checkbox-label" data-off="RAIN"></label>
 <input type="checkbox" name="rain_checkbox" id="fire_checkbox" class="ios-toggle" onclick="playFire()"/>
-<label for="fire_checkbox" class="checkbox-label" data-off="FIRE OFF" data-on="FIRE ON"></label>
+<label for="fire_checkbox" class="checkbox-label" data-off="FIRE"></label>
 <input type="checkbox" name="rain_checkbox" id="wind_checkbox" class="ios-toggle" onclick="playWind()"/>
-<label for="wind_checkbox" class="checkbox-label" data-off="WIND OFF" data-on="WIND ON"></label>
+<label for="wind_checkbox" class="checkbox-label" data-off="WIND" OFF" data-on="WIND ON""></label>
 </div>
+
+<!-- CHECKBOXES END================================
+=============================================== -->
 
 <!-- Toggles rain audio on/off -->
 <audio id="rainAudio" loop>
@@ -252,4 +224,19 @@ function playWind() {
 }
 </script>
 
+
+<style>
+.vl {
+    border-right: 6px solid green;
+    position: absolute;
+    height: 100%;
+    right: 50%
+    left: 80%;
+    margin-left: -3px;
+    top: 0;
+}
+</style>
+<div class="vl"></div>
+
+</body>
 </html>
