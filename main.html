@@ -10,6 +10,7 @@
 <div class="backgroundLayer">
     <img id="rainImage" src="rain.gif">
     <img id="caveImage" src="cave.png">
+    <img id="fireImage" src="fire.gif">
     <!-- <div class="taskbar">
       <br><br>
       <label id="rainSwitch" class="switch">
@@ -74,14 +75,18 @@ function playRain() {
 <!-- Script for play/pause -->
 <script>
 var fireAudio = document.getElementById("fireAudio");
+var fireImage = document.getElementById("fireImage");
 var isFire_Playing = false; // if true, play audio
+fireImage.style.display = "none";
 function playFire() {
     if(isFire_Playing) {
       fireAudio.pause();
       isFire_Playing = false;
+      fireImage.style.display = "none";
     } else {
       fireAudio.play();
       isFire_Playing = true;
+      fireImage.style.display = "initial";
     }
 }
 </script>

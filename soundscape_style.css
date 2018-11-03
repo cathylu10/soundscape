@@ -23,12 +23,16 @@ img {
   z-index: 0;
 }
 
+.caveImage {
+  z-index: 20;
+}
+
 .rainImage {
   z-index: 10;
 }
 
-.caveImage {
-  z-index: 20;
+.fireImage {
+  z-index: 30;
 }
 
 *,*:before,*:after{
