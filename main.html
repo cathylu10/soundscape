@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="soundscape_style.css">
+<title>Testing Stuff</title>
+</head>
+
+
+<body>
+<div class="backgroundLayer">
+    <img id="rainImage" src="rain.gif">
+    <img id="caveImage" src="cave.png">
+    <!-- <div class="taskbar">
+      <br><br>
+      <label id="rainSwitch" class="switch">
+        <input type="checkbox" onclick="playRain()">
+        <span class="slider round"></span>
+      </label>
+      <label class="soundLabels" id="RainLabel" for=rainSwitch>Rain</label>
+      <br><br>
+      <label id="fireSwitch" class="switch">
+        <input type="checkbox" onclick="playFire()" for=fireSwitch>
+        <span class="slider round"></span>
+      </label>
+      <label class="soundLabels" id="FireLabel">Fire</label>
+      <br><br>
+      <label id="windSwitch" class="switch">
+        <input type="checkbox" onclick="playWind()">
+        <span class="slider round"></span>
+      </label>
+      <label class="soundLabels" id="WindLabel" for=windSwitch>Wind</label>
+    </div> -->
+    <div id="toggles">
+      <input type="checkbox" name="rain_checkbox" id="rain_checkbox" class="ios-toggle" onclick="playRain()"/>
+      <label for="rain_checkbox" class="checkbox-label" data-off="RAIN OFF" data-on="RAIN ON"></label>
+      <input type="checkbox" name="rain_checkbox" id="fire_checkbox" class="ios-toggle" onclick="playFire()"/>
+      <label for="fire_checkbox" class="checkbox-label" data-off="FIRE OFF" data-on="FIRE ON"></label>
+      <input type="checkbox" name="rain_checkbox" id="wind_checkbox" class="ios-toggle" onclick="playWind()"/>
+      <label for="wind_checkbox" class="checkbox-label" data-off="WIND OFF" data-on="WIND ON"></label>
+    </div>
+</div>
+<!-- Toggles rain audio on/off -->
+
+<audio id="rainAudio" loop>
+  <source src="audio_files/rain.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var rainAudio = document.getElementById("rainAudio");
+var rainImage = document.getElementById("rainImage");
+var isRain_Playing = false; // if true, play audio
+rainImage.style.display = "none";
+function playRain() {
+    if(isRain_Playing) {
+      rainAudio.pause();
+      isRain_Playing = false;
+      rainImage.style.display = "none";
+    } else {
+      rainAudio.play();
+      isRain_Playing = true;
+      rainImage.style.display = "initial";
+    }
+}
+</script>
+
+<!-- Toggles fire audio on/off -->
+<audio id="fireAudio" loop>
+  <source src="audio_files/fire.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var fireAudio = document.getElementById("fireAudio");
+var isFire_Playing = false; // if true, play audio
+function playFire() {
+    if(isFire_Playing) {
+      fireAudio.pause();
+      isFire_Playing = false;
+    } else {
+      fireAudio.play();
+      isFire_Playing = true;
+    }
+}
+</script>
+
+<!-- Toggles wind audio on/off -->
+<audio id="windAudio" loop>
+  <source src="audio_files/wind.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var windAudio = document.getElementById("windAudio");
+var isWind_Playing = false; // if true, play audio
+function playWind() {
+    if(isWind_Playing) {
+      windAudio.pause();
+      isWind_Playing = false;
+    } else {
+      windAudio.play();
+      isWind_Playing = true;
+    }
+}
+</script>
+
+</body>
+</html>
