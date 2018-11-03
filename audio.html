@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset=”utf-8″>
+<title>A Big Mystery</title>
+</head>
+<body>
+<h1>HI YOU BETTER WORK</h1>
+<p>A cursed page</p>
+
+<!-- Toggles rain audio on/off -->
+<button onclick="playRain()" type="button">Play Rain Audio</button>
+<audio id="rainAudio" loop>
+  <source src="rain.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var rainAudio = document.getElementById("rainAudio");
+var isRain_Playing = false; // if true, play audio
+function playRain() {
+    if(isRain_Playing) {
+      rainAudio.pause();
+      isRain_Playing = false;
+    } else {
+      rainAudio.play();
+      isRain_Playing = true;
+    }
+}
+</script>
+
+<!-- Toggles fire audio on/off -->
+<button onclick="playFire()" type="button">Play Fire Audio</button>
+<audio id="fireAudio" loop>
+  <source src="fire.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var fireAudio = document.getElementById("fireAudio");
+var isFire_Playing = false; // if true, play audio
+function playFire() {
+    if(isFire_Playing) {
+      fireAudio.pause();
+      isFire_Playing = false;
+    } else {
+      fireAudio.play();
+      isFire_Playing = true;
+    }
+}
+</script>
+
+<!-- Toggles wind audio on/off -->
+<button onclick="playWind()" type="button">Play Wind Audio</button>
+<audio id="windAudio" loop>
+  <source src="wind.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var windAudio = document.getElementById("windAudio");
+var isWind_Playing = false; // if true, play audio
+function playWind() {
+    if(isWind_Playing) {
+      windAudio.pause();
+      isWind_Playing = false;
+    } else {
+      windAudio.play();
+      isWind_Playing = true;
+    }
+}
+</script>
+
+</body>
+</html>
