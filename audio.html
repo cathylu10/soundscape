@@ -6,43 +6,190 @@
 <title>A Big Mystery</title>
 </head>
 <body>
-<h1>HI YOU BETTER WORK</h1>
-<p>A cursed page</p>
 
 <style>
-.btn-group button {
-    background-color: #4CAF50; /* Green background */
-    border: 1px solid green; /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
+*,*:before,*:after{
+box-sizing:border-box;
+margin:0;
+padding:0;
+/*transition*/
+-webkit-transition:.25s ease-in-out;
+   -moz-transition:.25s ease-in-out;
+     -o-transition:.25s ease-in-out;
+        transition:.25s ease-in-out;
+outline:none;
+font-family:Helvetica Neue,helvetica,arial,verdana,sans-serif;
+}
+body{
+background:#f1f1f1;
+}
+#toggles{
+width:60px;
+margin:100px 0px 0px 85%;
+text-align:center;
+}
+.ios-toggle,.ios-toggle:active{
+position:absolute;
+top:-5000px;
+height:0;
+width:0;
+opacity:0;
+border:none;
+outline:none;
+}
+.checkbox-label{
+display:block;
+position:relative;
+padding:10px;
+margin-bottom:20px;
+font-size:12px;
+line-height:16px;
+width:100%;
+height:36px;
+/*border-radius*/
+-webkit-border-radius:18px;
+   -moz-border-radius:18px;
+        border-radius:18px;
+background:#f8f8f8;
+cursor:pointer;
+}
+.checkbox-label:before{
+content:'';
+display:block;
+position:absolute;
+z-index:1;
+line-height:34px;
+text-indent:40px;
+height:36px;
+width:36px;
+/*border-radius*/
+-webkit-border-radius:100%;
+   -moz-border-radius:100%;
+        border-radius:100%;
+top:0px;
+left:0px;
+right:auto;
+background:white;
+/*box-shadow*/
+-webkit-box-shadow:0 3px 3px rgba(0,0,0,.2),0 0 0 2px #dddddd;
+   -moz-box-shadow:0 3px 3px rgba(0,0,0,.2),0 0 0 2px #dddddd;
+        box-shadow:0 3px 3px rgba(0,0,0,.2),0 0 0 2px #dddddd;
 }
 
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-    content: "";
-    clear: both;
-    display: table;
+.checkbox-label:after{
+content:attr(data-off);
+display:block;
+position:absolute;
+z-index:0;
+top:0;
+left:60px;
+width:36px;
+padding:10px;
+height:100%;
+text-align:right;
+color:#bfbfbf;
+white-space:nowrap;
+}
+.ios-toggle:checked + .checkbox-label{
+/*box-shadow*/
+-webkit-box-shadow:inset 0 0 0 20px rgba(19,191,17,1),0 0 0 2px rgba(19,191,17,1);
+   -moz-box-shadow:inset 0 0 0 20px rgba(19,191,17,1),0 0 0 2px rgba(19,191,17,1);
+        box-shadow:inset 0 0 0 20px rgba(19,191,17,1),0 0 0 2px rgba(19,191,17,1);
+}
+.ios-toggle:checked + .checkbox-label:before{
+left:calc(100% - 36px);
+/*box-shadow*/
+-webkit-box-shadow:0 0 0 2px transparent,0 3px 3px rgba(0,0,0,.3);
+   -moz-box-shadow:0 0 0 2px transparent,0 3px 3px rgba(0,0,0,.3);
+        box-shadow:0 0 0 2px transparent,0 3px 3px rgba(0,0,0,.3);
+}
+.ios-toggle:checked + .checkbox-label:after{
+content:attr(data-on);
+left:60px;
+width:36px;
 }
 
-.btn-group button:not(:last-child) {
-    border-right: none; /* Prevent double borders */
+/*RAIN LABELLING----------------------------------------------------------------*/
+#rain_checkbox + .checkbox-label{
+/*box-shadow*/
+-webkit-box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
+   -moz-box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
+        box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
+}
+#rain_checkbox:checked + .checkbox-label{
+/*box-shadow*/
+-webkit-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+   -moz-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+        box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+}
+#rain_checkbox:checked + .checkbox-label:after{
+color:#1fc1c8;
 }
 
-/* Add a background color on hover */
-.btn-group button:hover {
-    background-color: #3e8e41;
+/*FIRE LABELLING----------------------------------------------------------------*/
+#fire_checkbox + .checkbox-label{
+/*box-shadow*/
+-webkit-box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
+   -moz-box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
+        box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
 }
+#fire_checkbox:checked + .checkbox-label{
+/*box-shadow*/
+-webkit-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+   -moz-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+        box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+}
+#fire_checkbox:checked + .checkbox-label:after{
+color:#1fc1c8;
+}
+
+/*WIND LABELLING----------------------------------------------------------------*/
+#wind_checkbox + .checkbox-label{
+/*box-shadow*/
+-webkit-box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
+   -moz-box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
+        box-shadow:inset 0 0 0 0px #1fc1c8,0 0 0 2px #dddddd;
+}
+#wind_checkbox:checked + .checkbox-label{
+/*box-shadow*/
+-webkit-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+   -moz-box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+        box-shadow:inset 0 0 0 20px #1fc1c8,0 0 0 2px #1fc1c8;
+}
+#wind_checkbox:checked + .checkbox-label:after{
+color:#1fc1c8;
+}
+
 </style>
-<div class="btn-group">
-  <button onclick="playRain()" type="button">Play Rain Audio</button>
-  <button onclick="playFire()" type="button">Play Fire Audio</button>
-  <button onclick="playWind()" type="button">Play Wind Audio</button>
+<!-- <div class="audio_switch">
+  <button onclick="playRain()" type="checkbox">Play Rain Audio</button>
+  <button onclick="playFire()" type="checkbox">Play Fire Audio</button>
+  <button onclick="playWind()" type="checkbox">Play Wind Audio</button>
+
+  <label class="switch">Rain
+  <input type="checkbox" onclick="playRain()">
+  <span class="slider round"></span>
+  </label>
+  <label class="switch">Fire
+  <input type="checkbox" onclick="playFire()">
+  <span class="slider round"></span>
+  </label>
+  <label class="switch">Wind
+  <input type="checkbox" onclick="playWind()">
+  <span class="slider round"></span>
+  </label>
+</div> -->
+
+<div id="toggles">
+<input type="checkbox" name="rain_checkbox" id="rain_checkbox" class="ios-toggle" onclick="playRain()"/>
+<label for="rain_checkbox" class="checkbox-label" data-off="RAIN OFF" data-on="RAIN ON"></label>
+<input type="checkbox" name="rain_checkbox" id="fire_checkbox" class="ios-toggle" onclick="playFire()"/>
+<label for="fire_checkbox" class="checkbox-label" data-off="FIRE OFF" data-on="FIRE ON"></label>
+<input type="checkbox" name="rain_checkbox" id="wind_checkbox" class="ios-toggle" onclick="playWind()"/>
+<label for="wind_checkbox" class="checkbox-label" data-off="WIND OFF" data-on="WIND ON"></label>
 </div>
 
 <!-- Toggles rain audio on/off -->
-
 <audio id="rainAudio" loop>
   <source src="audio_files/rain.mp3" type="audio/mpeg">
   Your browser does not support HTML5 audio.
@@ -64,7 +211,6 @@ function playRain() {
 </script>
 
 <!-- Toggles fire audio on/off -->
-
 <audio id="fireAudio" loop>
   <source src="audio_files/fire.mp3" type="audio/mpeg">
   Your browser does not support HTML5 audio.
@@ -86,7 +232,6 @@ function playFire() {
 </script>
 
 <!-- Toggles wind audio on/off -->
-
 <audio id="windAudio" loop>
   <source src="audio_files/wind.mp3" type="audio/mpeg">
   Your browser does not support HTML5 audio.
