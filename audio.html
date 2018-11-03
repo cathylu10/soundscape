@@ -9,10 +9,42 @@
 <h1>HI YOU BETTER WORK</h1>
 <p>A cursed page</p>
 
+<style>
+.btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+</style>
+<div class="btn-group">
+  <button onclick="playRain()" type="button">Play Rain Audio</button>
+  <button onclick="playFire()" type="button">Play Fire Audio</button>
+  <button onclick="playWind()" type="button">Play Wind Audio</button>
+</div>
+
 <!-- Toggles rain audio on/off -->
-<button onclick="playRain()" type="button">Play Rain Audio</button>
+
 <audio id="rainAudio" loop>
-  <source src="rain.mp3" type="audio/mpeg">
+  <source src="audio_files/rain.mp3" type="audio/mpeg">
   Your browser does not support HTML5 audio.
 </audio>
 
@@ -32,9 +64,9 @@ function playRain() {
 </script>
 
 <!-- Toggles fire audio on/off -->
-<button onclick="playFire()" type="button">Play Fire Audio</button>
+
 <audio id="fireAudio" loop>
-  <source src="fire.mp3" type="audio/mpeg">
+  <source src="audio_files/fire.mp3" type="audio/mpeg">
   Your browser does not support HTML5 audio.
 </audio>
 
@@ -54,9 +86,9 @@ function playFire() {
 </script>
 
 <!-- Toggles wind audio on/off -->
-<button onclick="playWind()" type="button">Play Wind Audio</button>
+
 <audio id="windAudio" loop>
-  <source src="wind.mp3" type="audio/mpeg">
+  <source src="audio_files/wind.mp3" type="audio/mpeg">
   Your browser does not support HTML5 audio.
 </audio>
 
