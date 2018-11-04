@@ -8,9 +8,9 @@
 
 <body>
 <div class="backgroundLayer">
-  <img id="rainImage" src="rain_tiled.gif">
-  <img id="caveImage" src="back_rocks.png">
-  <img id="fireImage" src="fire_rock.gif">
+  <img id="rainImage" src="image_files/rain_tiled.gif">
+  <img id="caveImage" src="image_files/back_rocks.png">
+  <img id="fireImage" src="image_files/fire_rock.gif">
 
   <div id="toggles">
     <input type="checkbox" name="rain_checkbox" id="rain_checkbox" class="ios-toggle" onclick="playRain()"/>
@@ -22,27 +22,35 @@
   </div>
 
   <div class="tab">
-    <button class="tablinks" onclick="switchTabs(event, 'recommended')">Recommended</button>
-    <button class="tablinks" onclick="switchTabs(event, 'custom')">Custom</button>
+    <button class="tablinks" onclick="switchTabs(event, 'work')">Work Time</button>
+    <button class="tablinks" onclick="switchTabs(event, 'break')">Break Time</button>
   </div>
 
-  <div id="recommended" class="tabcontent">
-    <p id="recommendedTimer">30 minutes 0 seconds</p>
-    <button id="start" onclick="timer(30, 'recommendedTimer', 'Take a break!')">Start</button>
+  <div id="work" class="tabcontent">
+    <p id="workTimer">30 minutes 0 seconds</p>
+    <button id="startWork" onclick="startOrResume(30, 0, 'workTimer', 'Take a 5 minute break!')">Start</button>
+    <button id="pauseWork" onclick="pauseTimer('workTimer')">Pause</button>
   </div>
-  <div id="custom" class="tabcontent">
-    <p id="customTimer">10 minutes 0 seconds</p>
-    <button id="start" onclick="timer(30, 'customTimer', 'Take a break!')">Start</button>
+  <div id="break" class="tabcontent">
+    <p id="breakTimer">5 minutes 0 seconds</p>
+    <button id="startBreak" onclick="startOrResume(5, 0, 'breakTimer', 'Back to work! You can do it!')">Start</button>
+    <button id="pauseBreak" onclick="pauseTimer('breakTimer')">Pause</button>
   </div>
 </div>
 
 <script>
 function switchTabs(evt, tabName) {
     var i, tabcontent, tablinks;
+    value = "0 minutes 0 seconds";
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
+    clearInterval(x);
+    value = "0 minutes 0 seconds";
+    isTiming = false;
+    document.getElementById("workTimer").innerHTML = "30 minutes 0 seconds";
+    document.getElementById("breakTimer").innerHTML = "5 minutes 0 seconds";
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
@@ -124,13 +132,34 @@ function playWind() {
 }
 </script>
 
+<!--Alarm audio-->
+<audio id="alarmSound">
+  <source src="audio_files/alarm.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
 
 <!--Runs Timer-->
 <script>
-function timer(amount, elem_id, exit_str) {
-  var minutes = amount;
-  var seconds = 0;
-  var x = setInterval(
+var value = "0 minutes 0 seconds";
+var x;
+var isTiming = false;
+function startOrResume(min, sec, elem_id, exit_str) {
+  if (value != "0 minutes 0 seconds") {
+    resumeTimer(elem_id, exit_str);
+  } else {
+    startTimer(min, sec, elem_id, exit_str);
+  }
+}
+
+function startTimer(min, sec, elem_id, exit_str) {
+  if (isTiming) {
+    return;
+  }
+  isTiming = true;
+  var alarmSound = document.getElementById("alarmSound");
+  var minutes = min;
+  var seconds = sec;
+  x = setInterval(
     function() {
      if (seconds == 0) {
        minutes -= 1;
@@ -140,11 +169,27 @@ function timer(amount, elem_id, exit_str) {
      }
      if (minutes == 0 && seconds == 0) {
        clearInterval(x);
+       value = "0 minutes 0 seconds";
        document.getElementById(elem_id).innerHTML = exit_str;
+       alarmSound.play();
      } else {
        document.getElementById(elem_id).innerHTML = minutes + " minutes " + seconds + " seconds";
      }
    }, 1000);
+}
+
+function pauseTimer(elem_id) {
+  value = document.getElementById(elem_id).innerHTML;
+  clearTimeout(x);
+  isTiming = false;
+}
+
+function resumeTimer(elem_id, exit_str){
+  var t = value.split(" minutes ");
+  var minutes = t[0];
+  var seconds = t[1].split(" seconds")[0];
+  startTimer(parseInt(minutes, 10), parseInt(t[1], 10), elem_id, exit_str);
+
 }
 </script>
 

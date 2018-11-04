@@ -15,7 +15,7 @@ img {
 }
 
 .backgroundLayer{
-  background-image: url("back_mountains.png");
+  background-image: url("image_files/back_mountains.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -217,7 +217,7 @@ width:36px; */
 /* Style the tab */
 .tab {
     position: absolute;
-    bottom: 11%;
+    bottom: 15%;
     right: 0%;
     width: 30%;
     margin-right: 1%;
@@ -259,28 +259,28 @@ width:36px; */
     bottom: 0%;
     right: 0%;
     width: 30%;
-    height: 9%;
+    height: 13%;
+    display: none;
     margin-right: 1%;
     margin-bottom: 1%;
     background-color: rgba(221, 221, 221, 0.5);
-    display: none;
     padding: 6px 12px;
     z-index: 505;
     text-align: center;
-    font-size: 16pt;
+    font-size: 12pt;
 }
 
-#recommendedTimer{
+#workTimer{
   color: #d8bfff;
   font-size: 150%;
 }
 
-#customTimer{
+#breakTimer{
   color: #d8bfff;
   font-size: 150%;
 }
 
-#start{
+#startWork{
   background-color: rgba(221, 221, 221, 0.5);
   border: none;
   color: black;
@@ -293,9 +293,69 @@ width:36px; */
   cursor: pointer;
 }
 
-#start:hover{
+#startWork:hover{
   background-color: rgba(216, 191, 255, 0.5);
 }
-#start:focus{
+#startWork:focus{
+  background-color: rgba(216, 191, 255, 1.0);
+}
+
+#pauseWork{
+  background-color: rgba(221, 221, 221, 0.5);
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#pauseWork:hover{
+  background-color: rgba(216, 191, 255, 0.5);
+}
+#pauseWork:focus{
+  background-color: rgba(216, 191, 255, 1.0);
+}
+
+#startBreak{
+  background-color: rgba(221, 221, 221, 0.5);
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#startBreak:hover{
+  background-color: rgba(216, 191, 255, 0.5);
+}
+#startBreak:focus{
+  background-color: rgba(216, 191, 255, 1.0);
+}
+
+#pauseBreak{
+  background-color: rgba(221, 221, 221, 0.5);
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#pauseBreak:hover{
+  background-color: rgba(216, 191, 255, 0.5);
+}
+#pauseBreak:focus{
   background-color: rgba(216, 191, 255, 1.0);
 }
