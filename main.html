@@ -31,9 +31,7 @@ function timer(amount, elem_id, exit_str) {
 <div class="backgroundLayer">
     <img id="rainImage" src="rain.gif">
     <img id="caveImage" src="back_rocks.png">
-    <img id="fireAuraImage" src="fire_aura.png">
-    <img id="fireLogsImage" src="fire_logs.png">
-    <img id="fireFlameImage" src="fire_flame.gif">
+    <img id="fireImage" src="fire_rock.gif">
     <!-- <div class="taskbar">
       <br><br>
       <label id="rainSwitch" class="switch">
@@ -98,26 +96,18 @@ function playRain() {
 <!-- Script for play/pause -->
 <script>
 var fireAudio = document.getElementById("fireAudio");
-var fireAuraImage = document.getElementById("fireAuraImage");
-var fireLogsImage = document.getElementById("fireLogsImage");
-var fireFlameImage = document.getElementById("fireFlameImage");
+var fireImage = document.getElementById("fireImage");
 var isFire_Playing = false; // if true, play audio
-fireAuraImage.style.display = "none";
-fireLogsImage.style.display = "none";
-fireFlameImage.style.display = "none";
+fireImage.style.display = "none";
 function playFire() {
     if(isFire_Playing) {
       fireAudio.pause();
       isFire_Playing = false;
-      fireAuraImage.style.display = "none";
-      fireLogsImage.style.display = "none";
-      fireFlameImage.style.display = "none";
+      fireImage.style.display = "none";
     } else {
       fireAudio.play();
       isFire_Playing = true;
-      fireAuraImage.style.display = "initial";
-      fireLogsImage.style.display = "initial";
-      fireFlameImage.style.display = "initial";
+      fireImage.style.display = "initial";
     }
 }
 </script>
