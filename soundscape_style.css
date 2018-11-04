@@ -10,6 +10,8 @@ img {
   width: 100%;
   height: 100%;
   position: absolute;
+  opacity: 0.2;
+  filter: alpha(opacity=10);
 
 }
 
@@ -23,17 +25,26 @@ img {
   z-index: 0;
 }
 
-.caveImage {
-  z-index: 20;
-}
-
 .rainImage {
   z-index: 10;
 }
 
-.fireImage {
+.caveImage {
+  z-index: 20;
+}
+
+.fireAuraImage {
   z-index: 30;
 }
+
+.fireLogsImage {
+  z-index: 40;
+}
+
+.fireFlameImage {
+  z-index: 50;
+}
+
 
 *,*:before,*:after{
 box-sizing:border-box;
