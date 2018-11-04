@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="soundscape_style.css">
+<title>Testing Stuff</title>
+</head>
+
+
+<body>
+<div class="backgroundLayer">
+  <img id="rainImage" src="rain_tiled.gif">
+  <img id="caveImage" src="back_rocks.png">
+  <img id="fireImage" src="fire_rock.gif">
+
+  <div id="toggles">
+    <input type="checkbox" name="rain_checkbox" id="rain_checkbox" class="ios-toggle" onclick="playRain()"/>
+    <label for="rain_checkbox" class="checkbox-label" data-off="RAIN OFF" data-on="RAIN ON"></label>
+    <input type="checkbox" name="rain_checkbox" id="fire_checkbox" class="ios-toggle" onclick="playFire()"/>
+    <label for="fire_checkbox" class="checkbox-label" data-off="FIRE OFF" data-on="FIRE ON"></label>
+    <input type="checkbox" name="rain_checkbox" id="wind_checkbox" class="ios-toggle" onclick="playWind()"/>
+    <label for="wind_checkbox" class="checkbox-label" data-off="WIND OFF" data-on="WIND ON"></label>
+  </div>
+
+  <div class="tab">
+    <button class="tablinks" onclick="switchTabs(event, 'recommended')">Recommended</button>
+    <button class="tablinks" onclick="switchTabs(event, 'custom')">Custom</button>
+  </div>
+
+  <div id="recommended" class="tabcontent">
+    <p id="recommendedTimer">30 minutes 0 seconds</p>
+    <button id="start" onclick="startOrResume(30, 0, 'recommendedTimer', 'Take a break!')">Start</button>
+    <button id="pause" onclick="pauseTimer('recommendedTimer')">Pause</button>
+  </div>
+  <div id="custom" class="tabcontent">
+    <p id="customTimer">10 minutes 0 seconds</p>
+    <button id="start" onclick="startTimer(30, 0, 'customTimer', 'Take a break!')">Start</button>
+  </div>
+</div>
+
+<script>
+function switchTabs(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+
+<!-- Toggles rain audio on/off -->
+
+<audio id="rainAudio" loop>
+  <source src="audio_files/rain.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var rainAudio = document.getElementById("rainAudio");
+var rainImage = document.getElementById("rainImage");
+var isRain_Playing = false; // if true, play audio
+rainImage.style.display = "none";
+function playRain() {
+    if(isRain_Playing) {
+      rainAudio.pause();
+      isRain_Playing = false;
+      rainImage.style.display = "none";
+    } else {
+      rainAudio.play();
+      isRain_Playing = true;
+      rainImage.style.display = "initial";
+    }
+}
+</script>
+
+<!-- Toggles fire audio on/off -->
+<audio id="fireAudio" loop>
+  <source src="audio_files/fire.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var fireAudio = document.getElementById("fireAudio");
+var fireImage = document.getElementById("fireImage");
+var isFire_Playing = false; // if true, play audio
+fireImage.style.display = "none";
+function playFire() {
+    if(isFire_Playing) {
+      fireAudio.pause();
+      isFire_Playing = false;
+      fireImage.style.display = "none";
+    } else {
+      fireAudio.play();
+      isFire_Playing = true;
+      fireImage.style.display = "initial";
+    }
+}
+</script>
+
+<!-- Toggles wind audio on/off -->
+<audio id="windAudio" loop>
+  <source src="audio_files/wind.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!-- Script for play/pause -->
+<script>
+var windAudio = document.getElementById("windAudio");
+var isWind_Playing = false; // if true, play audio
+function playWind() {
+    if(isWind_Playing) {
+      windAudio.pause();
+      isWind_Playing = false;
+    } else {
+      windAudio.play();
+      isWind_Playing = true;
+    }
+}
+</script>
+
+<!--Alarm audio-->
+<audio id="alarmSound">
+  <source src="audio_files/alarm.mp3" type="audio/mpeg">
+  Your browser does not support HTML5 audio.
+</audio>
+
+<!--Runs Timer-->
+<script>
+var value = "0 minutes 0 seconds";
+var x;
+var isTiming = false;
+
+function startOrResume(min, sec, elem_id, exit_str) {
+  if (value != "0 minutes 0 seconds") {
+    resumeTimer(elem_id, exit_str);
+  } else {
+    startTimer(min, sec, elem_id, exit_str);
+  }
+}
+
+function startTimer(min, sec, elem_id, exit_str) {
+  if (isTiming) {
+    return;
+  }
+  isTiming = true;
+  var alarmSound = document.getElementById("alarmSound");
+  var minutes = min;
+  var seconds = sec;
+  x = setInterval(
+    function() {
+     if (seconds == 0) {
+       minutes -= 1;
+       seconds = 59;
+     } else {
+       seconds -= 1;
+     }
+     if (minutes == 0 && seconds == 0) {
+       clearInterval(x);
+       value = "0 minutes 0 seconds";
+       document.getElementById(elem_id).innerHTML = exit_str;
+       alarmSound.play();
+     } else {
+       document.getElementById(elem_id).innerHTML = minutes + " minutes " + seconds + " seconds";
+     }
+   }, 1000);
+}
+
+function pauseTimer(elem_id) {
+  value = document.getElementById(elem_id).innerHTML;
+  clearTimeout(x);
+  isTiming = false;
+}
+
+function resumeTimer(elem_id, exit_str){
+  var t = value.split(" minutes ");
+  var minutes = t[0];
+  var seconds = t[1].split(" seconds")[0];
+  startTimer(parseInt(minutes, 10), parseInt(t[1], 10), elem_id, exit_str);
+
+}
+</script>
+
+<!-- // <script>
+// function loop_timer(cycles, work_time, break_time, elem_id) {
+//   while (cycles > 0) {
+//     startTimer(work_time, elem_id, "Take a break!");
+//
+//   }
+// }
+//
+// </script> -->
+
+</body>
+</html>
