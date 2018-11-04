@@ -3,6 +3,27 @@
 <head>
   <link rel="stylesheet" type="text/css" href="soundscape_style.css">
 <title>Testing Stuff</title>
+<script>
+function timer(amount, elem_id, exit_str) {
+  var minutes = amount;
+  var seconds = 0;
+  var x = setInterval(
+    function() {
+     if (seconds == 0) {
+       minutes -= 1;
+       seconds = 59;
+     } else {
+       seconds -= 1;
+     }
+     if (minutes == 0 && seconds == 0) {
+       clearInterval(x);
+       document.getElementById(elem_id).innerHTML = exit_str;
+     } else {
+       document.getElementById(elem_id).innerHTML = minutes + " minutes" + seconds + " seconds";
+     }
+   }, 1000);
+}
+</script>
 </head>
 
 
@@ -121,6 +142,9 @@ function playWind() {
     }
 }
 </script>
+
+<p id="recommended">30 minutes 0 seconds</p>
+<button id="start" onclick="timer(30, 'recommended', 'Take a break!')">Start</button>
 
 </body>
 </html>
