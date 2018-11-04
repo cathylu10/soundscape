@@ -3,65 +3,55 @@
 <head>
   <link rel="stylesheet" type="text/css" href="soundscape_style.css">
 <title>Testing Stuff</title>
-<script>
-function timer(amount, elem_id, exit_str) {
-  var minutes = amount;
-  var seconds = 0;
-  var x = setInterval(
-    function() {
-     if (seconds == 0) {
-       minutes -= 1;
-       seconds = 59;
-     } else {
-       seconds -= 1;
-     }
-     if (minutes == 0 && seconds == 0) {
-       clearInterval(x);
-       document.getElementById(elem_id).innerHTML = exit_str;
-     } else {
-       document.getElementById(elem_id).innerHTML = minutes + " minutes" + seconds + " seconds";
-     }
-   }, 1000);
-}
-</script>
 </head>
 
 
 <body>
 <div class="backgroundLayer">
-    <img id="rainImage" src="rain.gif">
-    <img id="caveImage" src="back_rocks.png">
-    <img id="fireImage" src="fire_rock.gif">
-    <!-- <div class="taskbar">
-      <br><br>
-      <label id="rainSwitch" class="switch">
-        <input type="checkbox" onclick="playRain()">
-        <span class="slider round"></span>
-      </label>
-      <label class="soundLabels" id="RainLabel" for=rainSwitch>Rain</label>
-      <br><br>
-      <label id="fireSwitch" class="switch">
-        <input type="checkbox" onclick="playFire()" for=fireSwitch>
-        <span class="slider round"></span>
-      </label>
-      <label class="soundLabels" id="FireLabel">Fire</label>
-      <br><br>
-      <label id="windSwitch" class="switch">
-        <input type="checkbox" onclick="playWind()">
-        <span class="slider round"></span>
-      </label>
-      <label class="soundLabels" id="WindLabel" for=windSwitch>Wind</label>
-    </div> -->
-    <div id="toggles">
-      <input type="checkbox" name="rain_checkbox" id="rain_checkbox" class="ios-toggle" onclick="playRain()"/>
-      <label for="rain_checkbox" class="checkbox-label" data-off="RAIN OFF" data-on="RAIN ON"></label>
-      <input type="checkbox" name="rain_checkbox" id="fire_checkbox" class="ios-toggle" onclick="playFire()"/>
-      <label for="fire_checkbox" class="checkbox-label" data-off="FIRE OFF" data-on="FIRE ON"></label>
-      <input type="checkbox" name="rain_checkbox" id="wind_checkbox" class="ios-toggle" onclick="playWind()"/>
-      <label for="wind_checkbox" class="checkbox-label" data-off="WIND OFF" data-on="WIND ON"></label>
-    </div>
+  <img id="rainImage" src="rain.gif">
+  <img id="caveImage" src="back_rocks.png">
+  <img id="fireImage" src="fire_rock.gif">
+
+  <div id="toggles">
+    <input type="checkbox" name="rain_checkbox" id="rain_checkbox" class="ios-toggle" onclick="playRain()"/>
+    <label for="rain_checkbox" class="checkbox-label" data-off="RAIN OFF" data-on="RAIN ON"></label>
+    <input type="checkbox" name="rain_checkbox" id="fire_checkbox" class="ios-toggle" onclick="playFire()"/>
+    <label for="fire_checkbox" class="checkbox-label" data-off="FIRE OFF" data-on="FIRE ON"></label>
+    <input type="checkbox" name="rain_checkbox" id="wind_checkbox" class="ios-toggle" onclick="playWind()"/>
+    <label for="wind_checkbox" class="checkbox-label" data-off="WIND OFF" data-on="WIND ON"></label>
+  </div>
+
+  <div class="tab">
+    <button class="tablinks" onclick="switchTabs(event, 'recommended')">Recommended</button>
+    <button class="tablinks" onclick="switchTabs(event, 'custom')">Custom</button>
+  </div>
+
+  <div id="recommended" class="tabcontent">
+    <p id="recommendedTimer">30 minutes 0 seconds</p>
+    <button id="start" onclick="timer(30, 'recommendedTimer', 'Take a break!')">Start</button>
+  </div>
+  <div id="custom" class="tabcontent">
+    <p id="customTimer">10 minutes 0 seconds</p>
+    <button id="start" onclick="timer(30, 'customTimer', 'Take a break!')">Start</button>
   </div>
 </div>
+
+<script>
+function switchTabs(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+
 <!-- Toggles rain audio on/off -->
 
 <audio id="rainAudio" loop>
@@ -134,8 +124,29 @@ function playWind() {
 }
 </script>
 
-<p id="recommended">30 minutes 0 seconds</p>
-<button id="start" onclick="timer(30, 'recommended', 'Take a break!')">Start</button>
+
+<!--Runs Timer-->
+<script>
+function timer(amount, elem_id, exit_str) {
+  var minutes = amount;
+  var seconds = 0;
+  var x = setInterval(
+    function() {
+     if (seconds == 0) {
+       minutes -= 1;
+       seconds = 59;
+     } else {
+       seconds -= 1;
+     }
+     if (minutes == 0 && seconds == 0) {
+       clearInterval(x);
+       document.getElementById(elem_id).innerHTML = exit_str;
+     } else {
+       document.getElementById(elem_id).innerHTML = minutes + " minutes " + seconds + " seconds";
+     }
+   }, 1000);
+}
+</script>
 
 </body>
 </html>
