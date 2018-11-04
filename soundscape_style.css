@@ -152,15 +152,21 @@ width:36px; */
 -webkit-box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
    -moz-box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
         box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
+        opacity: 0.5;
 }
 #rain_checkbox:checked + .checkbox-label{
 /*box-shadow*/
 -webkit-box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
    -moz-box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
         box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
+        opacity: 0.5;
 }
 #rain_checkbox:checked + .checkbox-label:after{
-color:#d8bfff;
+    color:#d8bfff;
+    opacity: 0.5;
+}
+#rain_checkbox:hover + .checkbox-label:hover{
+  opacity: 1.0;
 }
 
 /*FIRE LABELLING----------------------------------------------------------------*/
@@ -169,15 +175,21 @@ color:#d8bfff;
 -webkit-box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
    -moz-box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
         box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
+        opacity: 0.5;
 }
 #fire_checkbox:checked + .checkbox-label{
 /*box-shadow*/
 -webkit-box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
    -moz-box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
         box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
+        opacity: 0.5;
 }
 #fire_checkbox:checked + .checkbox-label:after{
-color:#d8bfff;
+    color:#d8bfff;
+    opacity: 0.5;
+}
+#fire_checkbox:hover + .checkbox-label:hover{
+  opacity: 1.0;
 }
 
 /*WIND LABELLING----------------------------------------------------------------*/
@@ -186,35 +198,47 @@ color:#d8bfff;
 -webkit-box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
    -moz-box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
         box-shadow:inset 0 0 0 0px #d8bfff,0 0 0 2px #dddddd;
+        opacity: 0.5;
 }
 #wind_checkbox:checked + .checkbox-label{
 /*box-shadow*/
 -webkit-box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
    -moz-box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
         box-shadow:inset 0 0 0 20px #d8bfff,0 0 0 2px #d8bfff;
+        opacity: 0.5;
 }
 #wind_checkbox:checked + .checkbox-label:after{
-color:#d8bfff;
+    color:#d8bfff;
+    opacity: 0.5;
 }
+#wind_checkbox:hover + .checkbox-label:hover{
+  opacity: 1.0;
+}
+
+
 
 
 /* Timer */
 /* Style the tab */
 .tab {
     position: absolute;
-    bottom: 21%;
+    bottom: 11%;
     right: 0%;
     width: 30%;
-    border: 1px solid #ccc;
     margin-right: 1%;
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: rgba(221, 221, 221, 0.5);
     z-index: 500;
+}
+
+.tab:focus {
+  width: 50%;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-    background-color: inherit;
+    /* background-color: inherit; */
+    background-color: rgba(221, 221, 221, 0.5);
     float: left;
     border: none;
     outline: none;
@@ -226,13 +250,13 @@ color:#d8bfff;
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ddd;
+    background-color: rgba(216, 191, 255, 1.0);
 }
 
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ccc;
+.tab button:focus {
+    background-color: rgba(216, 191, 255, 1.0);
 }
+
 
 /* Style the tab content */
 .tabcontent {
@@ -240,15 +264,43 @@ color:#d8bfff;
     bottom: 0%;
     right: 0%;
     width: 30%;
-    height: 20%;
+    height: 9%;
     margin-right: 1%;
     margin-bottom: 1%;
-    background-color: #ffffff;
+    background-color: rgba(221, 221, 221, 0.5);
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
     z-index: 505;
     text-align: center;
     font-size: 16pt;
+}
+
+#recommendedTimer{
+  color: #d8bfff;
+  font-size: 150%;
+}
+
+#customTimer{
+  color: #d8bfff;
+  font-size: 150%;
+}
+
+#start{
+  background-color: rgba(221, 221, 221, 0.5);
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#start:hover{
+  background-color: rgba(216, 191, 255, 0.5);
+}
+#start:focus{
+  background-color: rgba(216, 191, 255, 1.0);
 }
