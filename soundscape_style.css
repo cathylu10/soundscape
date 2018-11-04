@@ -5,6 +5,7 @@
 body, html {
   height: 100%;
   margin: 0;
+  background-color: #231F28;
 }
 
 img {
@@ -18,7 +19,7 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   z-index: 0;
 }
@@ -29,19 +30,13 @@ img {
 
 .caveImage {
   z-index: 20;
+  overflow: hidden;
 }
 
-.fireAuraImage {
+.fireImage {
   z-index: 30;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.fireLogsImage {
-  z-index: 40;
-}
-
-.fireFlameImage {
-  z-index: 50;
+  max-width: 1200;
+  max-height: 1200;
 }
 
 /* Switches */
